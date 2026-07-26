@@ -1,0 +1,37 @@
+# V1 — Fecal-image disease classifier (component demonstrator).
+# See docs/ai-model-plan.md (V1) and docs/model-development-plan.md.
+seed: 42
+run_name: fecal_effb0_v1
+
+data:
+  # Build once:  python scripts/build_fecal_manifest.py --images <Kaggle Train> --out <this>
+  manifest: poultryai/tasks/fecal/manifest.csv
+  img_size: 224
+  pcr_val: true              # additionally evaluate on the PCR-confirmed slice (higher-confidence GT)
+
+model:
+  backbone: efficientnet_b0  # efficientnet_b0 | resnet18 | convnext_tiny (timm) | mobilevit_s (timm)
+  pretrained: true
+  dropout: 0.2
+
+train:
+  max_epochs: 30
+  batch_size: 32
+  lr: 3.0e-4
+  weight_decay: 1.0e-2
+  precision: 16-mixed        # ignored on CPU
+  num_workers: 4
+  class_weighted_loss: true  # inverse-frequency CE for the Newcastle minority
+  label_smoothing: 0.05
+  early_stop_metric: val/macro_f1
+  early_stop_mode: max
+  patience: 6
+
+export:
+  onnx: true
+  onnx_path: artifacts/fecal_effb0.onnx
+
+logging:
+  tracker: mlflow            # mlflow | none
+  experiment: poultry-fecal
+  out_dir: artifacts/fecal

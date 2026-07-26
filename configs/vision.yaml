@@ -1,0 +1,31 @@
+# V3 — Detection → tracking → behavioural indices.
+# See docs/ai-model-plan.md (V3). Build the clip-aware manifests first:
+#   python scripts/build_roboflow_manifest.py \
+#     --root Data/downloads/Roboflow/Data/downloads --out-dir poultryai/tasks/vision/manifests
+seed: 42
+
+manifests_dir: poultryai/tasks/vision/manifests
+
+detector:
+  # train on the leakage-free re-split (train_detector.py writes a data.yaml from the manifest)
+  dataset: roboflow_broiler_detection    # bird detector
+  model: yolov8n.pt                      # nano = edge-friendly; transfer-learn (small data)
+  epochs: 100
+  imgsz: 640
+  conf: 0.25
+  out: artifacts/vision
+
+tracker:
+  iou_threshold: 0.3
+  max_age: 5
+  min_hits: 1
+
+indices:
+  grid: 6                # distribution_uniformity floor tiling
+  piling_radius_factor: 1.5
+  piling_crowd_k: 3
+  window_frames: 48      # frames pooled into one VISION_CHANNELS timestep
+  feeder_roi: null       # [x1,y1,x2,y2] in pixels, if a fixed feeder ROI is defined
+
+export:
+  onnx: true

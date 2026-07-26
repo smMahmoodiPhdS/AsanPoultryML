@@ -1,0 +1,43 @@
+# Hydra-style config for the multimodal early-warning experiment.
+seed: 42
+run_name: mm_patch_v1
+
+data:
+  root: ./data
+  window_minutes: 240        # 4 h env window (1 sample/min)
+  audio_seconds: 4
+  val_frac: 0.15
+  test_frac: 0.15
+
+model:
+  d_model: 128
+  env_backbone: patch        # tcn | patch
+  audio_backbone: cnn        # cnn | ast
+  meta_dim: 3
+  heads: 4
+  dropout: 0.1
+  modality_dropout: 0.2
+  audio:
+    sample_rate: 16000
+    n_mels: 64
+    n_fft: 1024
+    hop_length: 256
+
+train:
+  max_epochs: 50
+  batch_size: 32
+  lr: 3.0e-4
+  weight_decay: 1.0e-2
+  focal_gamma: 2.0
+  precision: 16-mixed
+  early_stop_metric: val/macro_ap
+  early_stop_mode: max
+
+eval:
+  leadtime:
+    target_flock_fpr: 0.05
+    persistence: 3
+
+logging:
+  tracker: mlflow            # mlflow | wandb | none
+  experiment: poultry-earlywarning

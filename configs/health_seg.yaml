@@ -1,0 +1,37 @@
+# V4 — Healthy/Sick posture segmentation. See docs/ai-model-plan.md (V4).
+# Reuses V3's clip-aware, leakage-free split; build it first if absent:
+#   python scripts/build_roboflow_manifest.py \
+#     --root Data/downloads/Roboflow/Data/downloads --out-dir poultryai/tasks/vision/manifests
+seed: 42
+run_name: health_seg_unet_v1
+
+data:
+  manifest: poultryai/tasks/vision/manifests/roboflow_healthy_sick.csv
+  img_size: 416                # Roboflow exports at 416x416
+
+model:
+  backbone: unet               # unet (edge) | deeplabv3_resnet50 (server)
+  pretrained: true             # deeplab only
+  base_ch: 32
+
+train:
+  max_epochs: 60               # small dataset (505 imgs) -> more epochs, strong aug
+  batch_size: 8
+  lr: 3.0e-4
+  weight_decay: 1.0e-2
+  precision: 16-mixed          # ignored on CPU
+  num_workers: 4
+  class_weighted_loss: true    # background dominates
+  dice_weight: 0.5
+  early_stop_metric: val/mIoU_foreground
+  early_stop_mode: max
+  patience: 10
+
+export:
+  onnx: true
+  onnx_path: artifacts/health_seg_unet.onnx
+
+logging:
+  tracker: mlflow              # mlflow | none
+  experiment: poultry-health-seg
+  out_dir: artifacts/health_seg

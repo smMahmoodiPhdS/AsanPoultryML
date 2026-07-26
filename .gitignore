@@ -1,0 +1,35 @@
+# Python bytecode and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Training scratch. Trained weights under artifacts/ ARE committed for now -
+# they are small (~140 KB) and reproducibility matters more than repo size at
+# this scale. Revisit if a vision model starts producing 100 MB checkpoints:
+# at that point use Git LFS or an object store, not git.
+runs/
+wandb/
+mlruns/
+lightning_logs/
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.h5
+
+# Large or regenerable data
+data/raw/
+data/interim/
+*.parquet
+*.npz
+
+# OS / editor
+.DS_Store
+.ipynb_checkpoints/

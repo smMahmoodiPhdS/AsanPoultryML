@@ -1,0 +1,46 @@
+# C1 — multimodal onset model on twin-synthetic data + lead-time evaluation.
+# See docs/ai-model-plan.md (§7) and poultryai/tasks/fusion/README.md. SIMULATION: validates
+# the train→lead-time pipeline end-to-end before real/twin-calibrated data exists.
+seed: 42
+run_name: fusion_synth_v1
+
+synth:
+  n_flocks: 16
+  healthy_frac: 0.4
+  flock_days: 4.0
+  window_minutes: 240        # env 4 h @ 1/min (matches schema/data_dictionary)
+  stride_minutes: 60
+  pre_onset_horizon_h: 48.0  # disease signature ramps up over this horizon before onset
+  label_horizon_h: 72.0      # windows within this pre-onset horizon are labelled positive
+
+data:
+  val_frac: 0.2
+  test_frac: 0.2
+
+model:
+  d_model: 128
+  env_backbone: patch        # tcn | patch
+  audio_backbone: cnn        # cnn | ast
+  meta_dim: 3
+  heads: 4
+  dropout: 0.1
+  modality_dropout: 0.2      # C2 robustness: random modality masking in training
+  audio:
+    sample_rate: 16000
+    n_mels: 64
+    n_fft: 1024
+    hop_length: 256
+
+train:
+  max_epochs: 40
+  batch_size: 16
+  lr: 3.0e-4
+  weight_decay: 1.0e-2
+  focal_gamma: 2.0
+
+eval:
+  target_flock_fpr: 0.05     # tune the alarm threshold to this false-alarm budget on val
+  persistence: 3             # consecutive windows above threshold to debounce an alarm
+
+logging:
+  out_dir: artifacts/fusion

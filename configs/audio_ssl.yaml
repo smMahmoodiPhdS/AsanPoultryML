@@ -1,0 +1,34 @@
+# A2 — self-supervised audio pretraining (masked-spectrogram autoencoder / audio-MAE).
+# See docs/ai-model-plan.md (A2). Pretrains A1's encoder on unlabeled audio; then set
+# model.init_encoder in configs/audio.yaml to fine-tune A1 from the result.
+seed: 42
+run_name: audio_ssl_mae_v1
+
+data:
+  manifest: poultryai/tasks/audio/manifest.csv
+  sample_rate: 16000
+  window_s: 4.0
+  hop_s: 2.0
+  max_windows: 40           # more windows/clip for SSL (unlabeled, no balance concern)
+
+model:
+  d_model: 128
+  n_mels: 64
+  n_fft: 1024
+  hop_length: 256
+
+ssl:
+  pretrain_splits: [train, val]   # unlabeled; NEVER test (no pretraining leakage into A1 test)
+  mask_ratio: 0.6
+  patch_mel: 8
+  patch_frame: 8
+
+train:
+  max_epochs: 60
+  batch_size: 64
+  lr: 5.0e-4
+  weight_decay: 1.0e-2
+  num_workers: 4
+
+export:
+  encoder_path: artifacts/audio_ssl/encoder.pt

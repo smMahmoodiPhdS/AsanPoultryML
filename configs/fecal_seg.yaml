@@ -1,0 +1,38 @@
+# V2 — Fecal lesion/region segmentation (inherits V1's leakage-safe split).
+# See docs/ai-model-plan.md (V2). Build the manifest first:
+#   python scripts/build_fecal_seg_manifest.py \
+#     --zenodo "<...>/imgSegmentation" --v1-manifest poultryai/tasks/fecal/manifest.csv \
+#     --out poultryai/tasks/fecal_seg/manifest.csv
+seed: 42
+run_name: fecal_seg_unet_v1
+
+data:
+  manifest: poultryai/tasks/fecal_seg/manifest.csv
+  img_size: 512
+
+model:
+  backbone: unet             # unet (edge) | deeplabv3_resnet50 (server)
+  pretrained: true           # deeplab only
+  base_ch: 32                # unet width
+
+train:
+  max_epochs: 40
+  batch_size: 8
+  lr: 3.0e-4
+  weight_decay: 1.0e-2
+  precision: 16-mixed        # ignored on CPU
+  num_workers: 4
+  class_weighted_loss: true  # inverse-frequency pixel weights (background dominates)
+  dice_weight: 0.5           # loss = CE + dice_weight * Dice
+  early_stop_metric: val/mIoU_foreground
+  early_stop_mode: max
+  patience: 8
+
+export:
+  onnx: true
+  onnx_path: artifacts/fecal_seg_unet.onnx
+
+logging:
+  tracker: mlflow            # mlflow | none
+  experiment: poultry-fecal-seg
+  out_dir: artifacts/fecal_seg

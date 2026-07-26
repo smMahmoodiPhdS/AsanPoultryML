@@ -1,0 +1,13 @@
+owner,saloon,disease,n_windows,n_positive
+synthfarm,s00,healthy,69,0
+synthfarm,s01,infectious_bronchitis,69,69
+synthfarm,s02,avian_influenza,69,69
+synthfarm,s03,colibacillosis,69,69
+synthfarm,s04,avian_influenza,69,69
+synthfarm,s05,healthy,69,0
+synthfarm,s06,newcastle,69,69
+synthfarm,s07,healthy,69,0
+synthfarm,s08,healthy,69,0
+synthfarm,s09,newcastle,69,69
+synthfarm,s10,healthy,69,0
+synthfarm,s11,coccidiosis,69,69
