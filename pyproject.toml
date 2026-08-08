@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "poultryai"
 version = "0.1.0"
-description = "Multimodal early-warning models for industrial poultry automation (PhD, University of Guilan)"
+description = "Multimodal early-warning models for industrial poultry automation (PhD, Rasht Science and Research Branch of Iran Open University)"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "Proprietary — academic" }

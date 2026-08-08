@@ -1,6 +1,7 @@
 # poultryai — Multimodal Early-Warning Models
 
-The AI core of the thesis (University of Guilan). Predicts the onset of five broiler
+The AI core of the thesis (Rasht Science and Research Branch of Iran Open
+University). Predicts the onset of five broiler
 diseases from **environmental time series + audio + vision** and evaluates *how early*
 it warns versus a human supervisor. Designed to train on a workstation/GPU and deploy to
 the **Raspberry Pi 4 edge** via ONNX.
