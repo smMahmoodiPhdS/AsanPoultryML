@@ -50,8 +50,8 @@ def main() -> None:
 
     # names from the original dataset's data.yaml
     root = None
-    for cand in (Path("Data/downloads/Roboflow/Data/downloads") / ds,
-                 Path("../../Data/downloads/Roboflow/Data/downloads") / ds):
+    for cand in (Path("PhdThesis/Data/downloads/Roboflow/Data/downloads") / ds,
+                 Path("../Data/downloads/Roboflow/Data/downloads") / ds):
         if cand.exists():
             root = cand; break
     names = parse_data_yaml_names(root) if root else ["object"]

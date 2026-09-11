@@ -12,7 +12,7 @@ camera frames → YOLO detector → SORT-lite tracker → behavioural indices
                                                        piling · feeding · distress
 ```
 
-## Datasets (all YOLO-format, `Data/downloads/Roboflow/`)
+## Datasets (all YOLO-format, `PhdThesis/Data/downloads/Roboflow/`)
 | dataset | role | classes |
 |---|---|---|
 | `roboflow_broiler_detection` | train the bird detector | Chicken-Birds |
@@ -34,7 +34,7 @@ tracking          : 3/15  clips leaked         healthy_sick : 11/75   clips leak
 Build the leakage-free manifests (run once, committed under `manifests/`):
 ```bash
 python scripts/build_roboflow_manifest.py \
-  --root Data/downloads/Roboflow/Data/downloads \
+  --root PhdThesis/Data/downloads/Roboflow/Data/downloads \
   --out-dir poultryai/tasks/vision/manifests
 ```
 

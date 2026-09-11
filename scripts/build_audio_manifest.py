@@ -2,7 +2,7 @@
 """Build the recording-level manifest for the audio classifier (A1).
 
     python scripts/build_audio_manifest.py \
-        --root Data/downloads/mendeley_vocalization/Chicken_Audio_Dataset \
+        --root PhdThesis/Data/downloads/mendeley_vocalization/Chicken_Audio_Dataset \
         --out  poultryai/tasks/audio/manifest.csv
 
 Torch-free (uses the ``wave`` stdlib). Splits at the recording level (stratified by class) and

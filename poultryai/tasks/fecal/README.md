@@ -27,7 +27,7 @@ tests/test_fecal_splits.py  split-integrity unit tests (numpy-only)
 ## 1. Build the leakage-safe manifest (run once)
 ```bash
 python scripts/build_fecal_manifest.py \
-  --images Data/downloads/Kaggle/kaggle_chicken_disease/Train \
+  --images PhdThesis/Data/downloads/Kaggle/kaggle_chicken_disease/Train \
   --out    poultryai/tasks/fecal/manifest.csv
 ```
 What it does, and **why it matters** (this is the scientific integrity step):

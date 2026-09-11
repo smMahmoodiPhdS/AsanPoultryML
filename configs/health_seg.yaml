@@ -1,7 +1,7 @@
 # V4 — Healthy/Sick posture segmentation. See docs/ai-model-plan.md (V4).
 # Reuses V3's clip-aware, leakage-free split; build it first if absent:
 #   python scripts/build_roboflow_manifest.py \
-#     --root Data/downloads/Roboflow/Data/downloads --out-dir poultryai/tasks/vision/manifests
+#     --root PhdThesis/Data/downloads/Roboflow/Data/downloads --out-dir poultryai/tasks/vision/manifests
 seed: 42
 run_name: health_seg_unet_v1
 

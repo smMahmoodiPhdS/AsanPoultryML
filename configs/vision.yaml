@@ -1,7 +1,7 @@
 # V3 — Detection → tracking → behavioural indices.
 # See docs/ai-model-plan.md (V3). Build the clip-aware manifests first:
 #   python scripts/build_roboflow_manifest.py \
-#     --root Data/downloads/Roboflow/Data/downloads --out-dir poultryai/tasks/vision/manifests
+#     --root PhdThesis/Data/downloads/Roboflow/Data/downloads --out-dir poultryai/tasks/vision/manifests
 seed: 42
 
 manifests_dir: poultryai/tasks/vision/manifests

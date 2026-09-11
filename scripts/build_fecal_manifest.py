@@ -7,7 +7,7 @@ and writes a stratified train/val/test split to a CSV manifest that ``train_feca
 consumes. This is the **leakage gate**: no downstream training is valid without it.
 
     python scripts/build_fecal_manifest.py \
-        --images Data/downloads/Kaggle/kaggle_chicken_disease/Train \
+        --images PhdThesis/Data/downloads/Kaggle/kaggle_chicken_disease/Train \
         --out    poultryai/tasks/fecal/manifest.csv
 
 Torch is *not* required — only numpy + PIL. Run once; commit the manifest for provenance.

@@ -22,7 +22,7 @@ import numpy as np
 
 
 class Disease(str, Enum):
-    """The five target broiler diseases (see Docs/Thesis)."""
+    """The five target broiler diseases (see PhdThesis/Thesis)."""
     NEWCASTLE = "newcastle"
     AVIAN_INFLUENZA = "avian_influenza"
     INFECTIOUS_BRONCHITIS = "infectious_bronchitis"

@@ -85,4 +85,4 @@ the controller — the two headline results.
 ### Immediate action
 Scaffold `poultryai/tasks/fecal/` + `scripts/train_fecal.py` + `configs/fecal.yaml`
 (dataset, transfer-learning trainer, eval report, ONNX export). Then point
-`Data/downloads/zenodo_.../` at it and run.
+`PhdThesis/Data/downloads/zenodo_.../` at it and run.

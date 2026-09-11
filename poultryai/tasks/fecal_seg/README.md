@@ -44,7 +44,7 @@ tests/test_fecal_seg.py         mask + metrics + split-inheritance tests (numpy-
 ## 1. Build the manifest (run once)
 ```bash
 python scripts/build_fecal_seg_manifest.py \
-  --zenodo "Data/downloads/zenodo_4628934_poultry_fecal/content (2)/imgSegmentation" \
+  --zenodo "PhdThesis/Data/downloads/zenodo_4628934_poultry_fecal/content (2)/imgSegmentation" \
   --v1-manifest poultryai/tasks/fecal/manifest.csv \
   --out poultryai/tasks/fecal_seg/manifest.csv
 ```

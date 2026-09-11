@@ -2,9 +2,9 @@
 
 *Companion to [`methodology.md`](methodology.md), [`metrics.md`](metrics.md),
 [`data_dictionary.md`](data_dictionary.md), [`model-development-plan.md`](model-development-plan.md)
-and [[Docs/Completion-Roadmap-and-AI-Strategy]]. This document turns those into a concrete,
+and [[PhdThesis/Completion-Roadmap-and-AI-Strategy]]. This document turns those into a concrete,
 **dataset-grounded** build plan for the three model pillars, using the data now on disk in
-`Data/downloads/`.*
+`PhdThesis/Data/downloads/`.*
 
 Status: **in implementation** · Updated: 2026-07-21 · Author: research plan (amend freely).
 All component encoders (V1–V4, A1–A2), the control pillar (C-1/C-2/C-3), and the C1 fusion
@@ -68,7 +68,7 @@ windows for real ones and run the on-farm control A/B — the two headline resul
 
 ## 1. Dataset inventory (verified on disk, 2026-07-21)
 
-Located under `Data/downloads/`. Counts and formats below were checked directly, not assumed.
+Located under `PhdThesis/Data/downloads/`. Counts and formats below were checked directly, not assumed.
 
 ### 1.1 Fecal disease imagery — enteric/systemic diseases
 
@@ -248,7 +248,7 @@ Four models, in dependency order. All export to ONNX for RPi4/VPS serving and pu
 
 ## 5. Control pillar (headline C3)
 
-Built on the existing `Applications/digital-twin/saloontwin` (thermal / RH / CO₂ / NH₃ / Gompertz
+Built on the existing `PhdThesis/digital-twin/saloontwin` (thermal / RH / CO₂ / NH₃ / Gompertz
 growth balances, gym-like `reset`/`step`, baseline `SetpointController`, smoke tests).
 
 ### Layered controller architecture (reflex → predictive → risk-aware)

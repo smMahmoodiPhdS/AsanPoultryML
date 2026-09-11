@@ -9,7 +9,7 @@ five behavioural indices the multimodal fusion model consumes
                                                                     (activity, distribution,
                                                                      piling, feeding, distress)
 
-Datasets (``Data/downloads/Roboflow/``), all YOLO-format:
+Datasets (``PhdThesis/Data/downloads/Roboflow/``), all YOLO-format:
 * ``roboflow_broiler_detection`` — bird bounding boxes (the detector's training data).
 * ``roboflow_tracking``          — rooster boxes from video clips (tracker evaluation).
 * ``roboflow_chicken_pose``      — eat-drink / moving / rest (behaviour → activity & feeding).

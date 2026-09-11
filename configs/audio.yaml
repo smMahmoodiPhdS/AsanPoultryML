@@ -1,7 +1,7 @@
 # A1 — Acoustic health/abnormality classifier (the reusable audio encoder).
 # See docs/ai-model-plan.md (A1). Build the manifest first:
 #   python scripts/build_audio_manifest.py \
-#     --root Data/downloads/mendeley_vocalization/Chicken_Audio_Dataset \
+#     --root PhdThesis/Data/downloads/mendeley_vocalization/Chicken_Audio_Dataset \
 #     --out poultryai/tasks/audio/manifest.csv
 seed: 42
 run_name: audio_cnn_v1

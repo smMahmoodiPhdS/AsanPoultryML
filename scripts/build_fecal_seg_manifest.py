@@ -8,7 +8,7 @@ each JSON to V1's ``manifest.csv`` by filename and copy its train/val/test assig
 image with no V1 twin is reported and given a stratified fallback split.
 
     python scripts/build_fecal_seg_manifest.py \
-        --zenodo "Data/downloads/zenodo_4628934_poultry_fecal/content (2)/imgSegmentation" \
+        --zenodo "PhdThesis/Data/downloads/zenodo_4628934_poultry_fecal/content (2)/imgSegmentation" \
         --v1-manifest poultryai/tasks/fecal/manifest.csv \
         --out poultryai/tasks/fecal_seg/manifest.csv
 

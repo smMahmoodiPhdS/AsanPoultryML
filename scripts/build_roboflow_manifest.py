@@ -2,7 +2,7 @@
 """Audit Roboflow's shipped splits and build a clip-aware, leakage-free re-split.
 
     python scripts/build_roboflow_manifest.py \
-        --root Data/downloads/Roboflow/Data/downloads \
+        --root PhdThesis/Data/downloads/Roboflow/Data/downloads \
         --out-dir poultryai/tasks/vision/manifests
 
 For each dataset it (1) reports how many source clips leak across the *shipped* split, and

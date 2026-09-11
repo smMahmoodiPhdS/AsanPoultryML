@@ -7,7 +7,7 @@ image models cannot see — cough / rale / sneeze are audible before visible dec
 [`../../../docs/ai-model-plan.md`](../../../docs/ai-model-plan.md) (A1).
 
 ## Data
-`Data/downloads/mendeley_vocalization/Chicken_Audio_Dataset` — **346 recordings**, 48 kHz mono:
+`PhdThesis/Data/downloads/mendeley_vocalization/Chicken_Audio_Dataset` — **346 recordings**, 48 kHz mono:
 Healthy 139 / Unhealthy 121 / Noise 86, durations 0.5 s – 906 s.
 
 Honest scope: the labels are a **binary health signal** (Healthy vs Unhealthy) + an explicit
@@ -48,7 +48,7 @@ configs/audio.yaml · tests/test_audio.py
 ## Run
 ```bash
 python scripts/build_audio_manifest.py \
-  --root Data/downloads/mendeley_vocalization/Chicken_Audio_Dataset \
+  --root PhdThesis/Data/downloads/mendeley_vocalization/Chicken_Audio_Dataset \
   --out poultryai/tasks/audio/manifest.csv          # torch-free; run once
 
 pip install -e ".[dev,track,audio]" torchaudio

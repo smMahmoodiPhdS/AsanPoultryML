@@ -8,7 +8,7 @@ with an appearance/posture signal, and feeds V3's `distress_index` and the fusio
 Task: semantic segmentation over pixel classes `{background, healthy, sick}`.
 
 ## Data
-`Data/downloads/Roboflow/roboflow_healthy_sick` — YOLOv8-seg polygons, **505 images**, one
+`PhdThesis/Data/downloads/Roboflow/roboflow_healthy_sick` — YOLOv8-seg polygons, **505 images**, one
 polygon each, **well balanced** (Healthy 241 / Sick 250) with 14 background images, exported at
 416×416.
 
@@ -34,7 +34,7 @@ tests/test_health_seg.py
 ```bash
 # 1) ensure the clip-aware manifest exists (built by V3):
 python scripts/build_roboflow_manifest.py \
-  --root Data/downloads/Roboflow/Data/downloads --out-dir poultryai/tasks/vision/manifests
+  --root PhdThesis/Data/downloads/Roboflow/Data/downloads --out-dir poultryai/tasks/vision/manifests
 
 # 2) train (needs torch stack):
 pip install -e ".[dev,track]" torchvision
